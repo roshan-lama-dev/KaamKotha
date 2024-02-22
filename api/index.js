@@ -2,6 +2,8 @@ import express from "express";
 import dotenv from "dotenv";
 dotenv.config();
 import mongoose from "mongoose";
+
+import userRouter from "./routes/user.route.js";
 const PORT = 3000;
 
 const app = express();
@@ -14,6 +16,8 @@ const databaseConnecion = () => {
   }
 };
 databaseConnecion();
+
+app.use("/api/user", userRouter);
 app.listen(PORT, () => {
   console.log(`THe server is running at http://localhost:${PORT}`);
 });
