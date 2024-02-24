@@ -5,7 +5,6 @@ import { About } from "./pages/About";
 import { SignIn } from "./pages/SignIn";
 import { SignUp } from "./pages/SignUp";
 import { Header } from "./components/Header";
-import { Footer } from "./components/Footer";
 import { Profile } from "./pages/Profile";
 import { PrivateRoute } from "./components/PrivateRoute";
 function App() {
@@ -23,10 +22,6 @@ function App() {
           <Route path="/profile" element={<Profile />}></Route>
         </Route>
       </Routes>
-
-      <footer>
-        <Footer />
-      </footer>
     </>
   );
 }
