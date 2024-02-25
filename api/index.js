@@ -6,7 +6,7 @@ import mongoose from "mongoose";
 
 import userRouter from "./routes/user.route.js";
 import signupRouter from "./routes/auth.route.js";
-const PORT = 3000;
+const PORT = 5000;
 
 const app = express();
 const databaseConnecion = () => {
