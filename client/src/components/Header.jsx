@@ -5,7 +5,7 @@ export const Header = () => {
   const { currentUser } = useSelector((state) => state.user);
   // const navigate = useNavigate();
   return (
-    <nav className="p-4 bg-slate-700 text-white shadow-sm">
+    <nav className="p-5 bg-slate-700 text-white shadow-sm">
       <div className="flex items-center justify-between">
         <span className="text-3xl text-bold">LOGO</span>
 
