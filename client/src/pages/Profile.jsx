@@ -49,6 +49,7 @@ export const Profile = () => {
       // error handling
 
       (error) => {
+        console.log(error);
         setFileUploadError(true);
       },
 

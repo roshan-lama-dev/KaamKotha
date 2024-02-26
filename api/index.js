@@ -3,9 +3,10 @@ import dotenv from "dotenv";
 import cors from "cors";
 dotenv.config();
 import mongoose from "mongoose";
-
+import cookieParser from "cookie-parser";
 import userRouter from "./routes/user.route.js";
 import signupRouter from "./routes/auth.route.js";
+
 const PORT = 5000;
 
 const app = express();
@@ -19,6 +20,7 @@ const databaseConnecion = () => {
 };
 databaseConnecion();
 app.use(express.json());
+app.use(cookieParser());
 app.use("/api/user", userRouter);
 app.use("/api/auth", signupRouter);
 
