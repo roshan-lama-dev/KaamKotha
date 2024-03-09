@@ -12,6 +12,9 @@ import {
   updateUserStart,
   updateFailure,
   updateSuccess,
+  deleteUserFaliure,
+  deleteUserStart,
+  deleteUserSuccess,
 } from "../redux/user/userSlice";
 import { useDispatch } from "react-redux";
 export const Profile = () => {
@@ -78,6 +81,7 @@ export const Profile = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      console.log(currentUser);
       dispatch(updateUserStart());
       const res = await fetch(`/api/user/update/${currentUser._id}`, {
         method: "POST",
@@ -98,6 +102,27 @@ export const Profile = () => {
     }
   };
 
+  const handleDelete = async () => {
+    try {
+      if (window.confirm("Are you sure you want to delete account?")) {
+        dispatch(deleteUserStart());
+        const res = await fetch(`/api/user/delete/${currentUser._id}`, {
+          method: "DELETE",
+        });
+        const data = await res.json();
+
+        if (data.success === false) {
+          dispatch(deleteUserFaliure(data.message));
+          return;
+        }
+        dispatch(deleteUserSuccess(data));
+      } else {
+        return;
+      }
+    } catch (error) {
+      dispatch(deleteUserFaliure(error.message));
+    }
+  };
   // console.log(formData);
   return (
     <div>
@@ -171,7 +196,9 @@ export const Profile = () => {
         </button>
 
         <div className="flex justify-between">
-          <span>Delete Account</span>
+          <span className="cursor-pointer" onClick={handleDelete}>
+            Delete Account
+          </span>
           <span>Logout</span>
         </div>
 

@@ -35,6 +35,18 @@ const userSlice = createSlice({
       state.error = action.payload;
       state.loading = false;
     },
+    deleteUserStart: (state) => {
+      state.loading = true;
+    },
+    deleteUserSuccess: (state) => {
+      state.currentUser = null;
+      state.loading = false;
+      state.error = null;
+    },
+    deleteUserFaliure: (state, action) => {
+      state.error = action.payload;
+      state.loading = false;
+    },
   },
 });
 
@@ -45,6 +57,9 @@ export const {
   updateFailure,
   updateSuccess,
   updateUserStart,
+  deleteUserFaliure,
+  deleteUserStart,
+  deleteUserSuccess,
 } = userSlice.actions;
 // the function within the reducres are called actions.
 export default userSlice.reducer;
