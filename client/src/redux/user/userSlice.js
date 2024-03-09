@@ -47,6 +47,18 @@ const userSlice = createSlice({
       state.error = action.payload;
       state.loading = false;
     },
+    logOutStart: (state) => {
+      state.loading = true;
+    },
+    logOutSuccess: (state) => {
+      state.currentUser = null;
+      state.loading = false;
+      state.error = null;
+    },
+    logOutFaliure: (state, action) => {
+      state.error = action.payload;
+      state.loading = false;
+    },
   },
 });
 
@@ -60,6 +72,9 @@ export const {
   deleteUserFaliure,
   deleteUserStart,
   deleteUserSuccess,
+  logOutFaliure,
+  logOutStart,
+  logOutSuccess,
 } = userSlice.actions;
 // the function within the reducres are called actions.
 export default userSlice.reducer;
